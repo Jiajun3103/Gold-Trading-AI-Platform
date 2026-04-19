@@ -17,8 +17,8 @@ build/
 
 # Models (large binary files)
 #Models/*.keras
-Models/*.bin
-Models/*.h5
+#Models/*.bin
+#Models/*.h5
 
 # Data
 Data_preparation/*.csv
