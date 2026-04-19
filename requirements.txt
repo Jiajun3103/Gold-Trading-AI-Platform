@@ -30,3 +30,4 @@ httpx>=0.27.0                 # async HTTP calls to Genkit / ADK service
 # ── Config ────────────────────────────────────────────────────
 python-dotenv>=1.2.1
 scikit-learn>=1.3.2
+httpx
