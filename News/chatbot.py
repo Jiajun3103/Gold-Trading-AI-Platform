@@ -58,6 +58,9 @@ Important constraints:
 
 
 def _get_google_api_key():
+    api_key = os.getenv("GOOGLE_API_KEY") or os.getenv("GEMINI_API_KEY")
+    if api_key:
+        return api_key.strip()
     load_dotenv(dotenv_path=DOTENV_PATH, override=False)
     api_key = os.getenv("GOOGLE_API_KEY") or os.getenv("GEMINI_API_KEY")
     return api_key.strip() if isinstance(api_key, str) else None
