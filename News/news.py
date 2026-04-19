@@ -42,7 +42,7 @@ REPORT_SCHEMA = {
 
 
 def _get_google_api_key():
-    api_key = os.getenv("GOOGLE_API_KEY") or os.getenv("GEMINI_API_KEY")
+    api_key = os.environ.get("GOOGLE_API_KEY") or os.environ.get("GEMINI_API_KEY")
     if api_key:
         return api_key.strip()
     # Force-load project root .env so key resolution does not depend on cwd.
