@@ -1,0 +1,28 @@
+.env
+__pycache__/
+*.pyc
+*.pyo
+portfolio.json
+
+# Node
+node_modules/
+genkit_flows/node_modules/
+genkit_flows/dist/
+
+# Python build artifacts
+*.egg-info/
+dist/
+build/
+.venv/
+
+# Models (large binary files)
+Models/*.keras
+Models/*.bin
+Models/*.h5
+
+# Data
+Data_preparation/*.csv
+
+# Misc
+.DS_Store
+*.log

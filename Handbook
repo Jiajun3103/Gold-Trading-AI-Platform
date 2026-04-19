@@ -1,0 +1,7 @@
+Using LSTM model to train the model
+the backend link access:
+1. cd backend
+2. python main.py
+3. for checkiing : http://127.0.0.1:8000/docs
+4. cd frontend
+5. npm run dev

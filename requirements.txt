@@ -1,0 +1,31 @@
+# Spectre Gold AI Platform — Python dependencies
+# Install: pip install -r requirements.txt
+# Environment: conda activate resume-ai
+
+# ── Web framework ─────────────────────────────────────────────
+streamlit>=1.55.0
+fastapi>=0.110.0
+uvicorn[standard]>=0.27.1
+
+# ── ML / data ─────────────────────────────────────────────────
+tensorflow>=2.20.0
+joblib>=1.3.2
+numpy>=1.26.4
+pandas>=2.2.0
+
+# ── Market data ───────────────────────────────────────────────
+yfinance>=1.3.0
+
+# ── Charts ────────────────────────────────────────────────────
+plotly>=6.7.0
+
+# ── Google AI SDKs ────────────────────────────────────────────
+google-genai>=1.53.0          # primary SDK (google.genai)
+google-generativeai>=0.8.6    # legacy SDK fallback (google.generativeai)
+
+# ── HTTP clients ──────────────────────────────────────────────
+requests>=2.32.5              # news.py grounding redirect resolution
+httpx>=0.27.0                 # async HTTP calls to Genkit / ADK service
+
+# ── Config ────────────────────────────────────────────────────
+python-dotenv>=1.2.1
