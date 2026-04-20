@@ -106,7 +106,6 @@ def _call_genkit_market_intelligence(question: str = "What is the current gold m
 # --- PAGE CONFIG ---
 st.set_page_config(page_title="Spectre Gold AI", page_icon="💰", layout="wide")
 
-# --- 初始化 Session State (存储新闻数据) ---
 if 'news_analysis' not in st.session_state:
     st.session_state.news_analysis = None
 if 'risk_result' not in st.session_state:
@@ -321,30 +320,26 @@ if st.sidebar.button("Clear Cache & Reset"):
     st.cache_data.clear()
     st.rerun()
 
-# --- 核心逻辑：计算混合预测价格 ---
-# 1. 纯技术面预测 (LSTM)
 last_60_days = df['Close'].values[-60:].reshape(-1, 1)
 scaled_input = scaler.transform(last_60_days)
 current_batch = scaled_input.reshape((1, 60, 1))
 prediction_scaled = model.predict(current_batch)
 tech_predicted_price = float(scaler.inverse_transform(prediction_scaled)[0][0])
 
-# 2. 情绪影响因子 (基于新闻按钮点击后的状态)
 sentiment_score = 0.0
 sentiment_label = "Neutral (Technical Only)"
 
 if st.session_state.news_analysis:
     sent = st.session_state.news_analysis.get('sentiment', 'Neutral')
     if sent == "Bullish":
-        sentiment_score = 0.005 # 增加 0.5% 的溢价
+        sentiment_score = 0.005 
         sentiment_label = "BULLISH (Hybrid)"
     elif sent == "Bearish":
-        sentiment_score = -0.005 # 减少 0.5% 的价格
+        sentiment_score = -0.005 
         sentiment_label = "BEARISH (Hybrid)"
     else:
         sentiment_label = "NEUTRAL (Hybrid)"
 
-# 3. 计算混合价格
 final_predicted_price = tech_predicted_price * (1 + sentiment_score)
 last_price = float(df['Close'].iloc[-1])
 hybrid_change = final_predicted_price - last_price
