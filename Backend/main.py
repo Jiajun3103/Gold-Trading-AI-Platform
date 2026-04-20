@@ -42,7 +42,10 @@ scaler = joblib.load(SCALER_PATH)
 
 @app.get("/")
 def home():
-    return {"message": "Aurum AI Backend is running!"}
+    key = os.environ.get("GOOGLE_API_KEY")
+    masked_key = f"{key[:4]}***" if key else "NOT FOUND"
+    return {"message": "Aurum AI Backend is running!", "debug_key": masked_key}
+    #return {"message": "Aurum AI Backend is running!"}
 
 @app.get("/predict-price")
 async def predict_price():
